@@ -228,3 +228,6 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+# specific to this project: twitter creds
+creds.txt
