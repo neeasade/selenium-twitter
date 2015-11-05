@@ -10,18 +10,33 @@ using OpenQA.Selenium;
 
 namespace selenium_twitter
 {
-    class ProfilePage : WebBlock
+    public enum ProfileViews
+    {
+        Tweets,
+        TweetsAndReplies,
+        PhotosAndVideos
+    }
+
+    class ProfilePage : TwitterPage
     {
         public ProfilePage(Session session) : base(session)
 		{
         }
 
-        public IEnumerable<Tweet> Tweets 
+        /// <summary>
+        /// Change to a different ProfilePage view.
+        /// </summary>
+        /// <param name="aView"></param>
+        public void ChangeView(ProfileViews aView)
         {
-            get
+            switch (aView)
             {
-                return FindElements(By.CssSelector("[data-item-type=\"tweet\"]"))
-                    .Select(tag => new Tweet(Session, tag));
+                case ProfileViews.Tweets:
+                    break;
+                case ProfileViews.TweetsAndReplies:
+                    break;
+                case ProfileViews.PhotosAndVideos:
+                    break;
             }
         }
     }

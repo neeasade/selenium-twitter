@@ -20,24 +20,40 @@ namespace selenium_twitter
         {
         }
 
-        public IClickable<WebBlock> Content
+        public string Content
         {
-            get { return new Clickable<WebBlock>(this, By.ClassName("tweet-text")); }
+            get { return new Clickable<WebBlock>(this, By.ClassName("tweet-text")).Text; }
         }
 
-        public IClickable<WebBlock> Username
+        public String Username
         {
-            get { return new Clickable<WebBlock>(this, By.ClassName("username")); }
+            get { return new Clickable<WebBlock>(this, By.ClassName("username")).Text; }
         }
 
-        public IClickable<WebBlock> FullName
+        public String FullName
         {
-            get { return new Clickable<WebBlock>(this, By.ClassName("fullname")); }
+            get { return new Clickable<WebBlock>(this, By.ClassName("fullname")).Text; }
         }
 
         public IClickable<WebBlock> Favorites
         {
             get { return new Clickable<WebBlock>(this, By.ClassName("ProfileTweet-actionCountForPresentation")); }
         }
+
+        public IClickable<WebBlock> RetweetButton
+        {
+            get { return new Clickable<WebBlock>(this, By.ClassName("Icon--retweet")); }
+        }
+
+        public IClickable<WebBlock> ReplyButton
+        {
+            get { return new Clickable<WebBlock>(this, By.ClassName("Icon--reply")); }
+        }
+  
+        public IClickable<WebBlock> FavoriteButton
+        {
+            get { return new Clickable<WebBlock>(this, By.ClassName("HeartAnimation")); }
+        }
+
     }
 }

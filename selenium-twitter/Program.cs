@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,24 +17,13 @@ namespace selenium_twitter
     {
         static void Main(string[] args)
         {
-            // bring up a profile page:
-            Threaded<Session>
-                .With<Firefox>()
-                .NavigateTo<ProfilePage>("https://twitter.com/sele_test_2");
-
-             IEnumerable<Tweet> lTweets = Threaded<Session>
-                .CurrentBlock<ProfilePage>()
-                .Tweets;
-
-            // print the content of the tweets
-            foreach (Tweet lTweet in lTweets)
-            {
-                Console.WriteLine(lTweet.Content.Text);
-            }
-
-            // Close a profile page:
-            Threaded<Session>
-                .End();
+            // get creds from my super secret secure file.
+            List<string> lUserInfo = File.ReadAllLines("creds.txt")[2].Split('|').ToList<string>();
+            String lUsername = lUserInfo[3];
+            String lPassword = lUserInfo[2];
+            
+            // Create a session, login.
+            User lUser = new User(lUsername, lPassword);
 
             // pause
             Console.ReadLine();
