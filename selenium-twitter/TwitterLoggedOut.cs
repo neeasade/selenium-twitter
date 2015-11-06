@@ -20,9 +20,9 @@ namespace selenium_twitter
         {
         }
 
-        public IClickable LoginButton
+        public IClickable<TwitterLoggedOut> LoginButton
         {
-            get { return new Clickable(this, By.ClassName("js-login")); }
+            get { return new Clickable<TwitterLoggedOut>(this, By.ClassName("js-login")); }
         }
         public LoginDialog LoginDialog
         {
@@ -37,14 +37,19 @@ namespace selenium_twitter
             Tag = FindElement(By.ClassName("LoginDialog-body"));
         }
 
-        public ITextField<WebBlock> UsernameField
+        public ITextField<LoginDialog> UsernameField
         {
-            get { return new TextField<WebBlock>(this, By.Id("signin-email")); }
+            get { return new TextField<LoginDialog>(this, By.Id("signin-email")); }
         }
 
-        public ITextField<WebBlock> PasswordField
+        public ITextField<LoginDialog> PasswordField
         {
-            get { return new TextField<WebBlock>(this, By.Id("signin-password")); }
+            get { return new TextField<LoginDialog>(this, By.Id("signin-password")); }
+        }
+
+        public IClickable LoginButton
+        {
+            get { return new Clickable(this, By.ClassName("submit")); }
         }
      }
 }

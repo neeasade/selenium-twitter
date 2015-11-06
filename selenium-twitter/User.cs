@@ -54,18 +54,12 @@ namespace selenium_twitter
                 mUsername = aUsername;
 
                 mSession.NavigateTo<TwitterLoggedOut>("https://twitter.com")
-                    .LoginButton.Click<TwitterLoggedOut>();
+                    .LoginButton.Click()
+                    .LoginDialog
+                    .UsernameField.EnterText(aUsername)
+                    .PasswordField.EnterText(aPassword)
+                    .LoginButton.Click<TwitterPage>();
 
-                Thread.Sleep(2000);
-
-                // Exception on click why
-                mSession.CurrentBlock<TwitterLoggedOut>()
-                    .LoginDialog.UsernameField.EnterText(aUsername);
-
-                //lDialog.UsernameField.EnterText(aUsername);
-                //lDialog.PasswordField.EnterText(aPassword);
-
-                //TODO check 
                 return true;
             }
             return false;
