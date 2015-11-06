@@ -57,7 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HomePage.cs" />
-    <Compile Include="LoginDialog.cs" />
     <Compile Include="ProfilePage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

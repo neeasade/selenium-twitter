@@ -24,6 +24,27 @@ namespace selenium_twitter
         {
             get { return new Clickable(this, By.ClassName("js-login")); }
         }
-
+        public LoginDialog LoginDialog
+        {
+            get { return new LoginDialog(Session); }
+        }
     }
+
+    class LoginDialog : WebBlock
+    {
+        public LoginDialog(Session session) : base(session)
+        {
+            Tag = FindElement(By.ClassName("LoginDialog-body"));
+        }
+
+        public ITextField<WebBlock> UsernameField
+        {
+            get { return new TextField<WebBlock>(this, By.Id("signin-email")); }
+        }
+
+        public ITextField<WebBlock> PasswordField
+        {
+            get { return new TextField<WebBlock>(this, By.Id("signin-password")); }
+        }
+     }
 }

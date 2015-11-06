@@ -7,6 +7,7 @@ using Bumblebee.Setup;
 using Bumblebee.Setup.DriverEnvironments;
 using Bumblebee.Implementation;
 using Bumblebee.Interfaces;
+using System.Threading;
 
 
 namespace selenium_twitter
@@ -55,7 +56,11 @@ namespace selenium_twitter
                 mSession.NavigateTo<TwitterLoggedOut>("https://twitter.com")
                     .LoginButton.Click<TwitterLoggedOut>();
 
-                mSession.CurrentBlock<LoginDialog>().UsernameField.EnterText(aUsername);
+                Thread.Sleep(2000);
+
+                // Exception on click why
+                mSession.CurrentBlock<TwitterLoggedOut>()
+                    .LoginDialog.UsernameField.EnterText(aUsername);
 
                 //lDialog.UsernameField.EnterText(aUsername);
                 //lDialog.PasswordField.EnterText(aPassword);
